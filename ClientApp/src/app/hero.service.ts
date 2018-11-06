@@ -15,4 +15,7 @@ export class HeroService  {
   getHeroes(): Observable<Hero[]> {
     return of(HEROES);
   }
+  add(hero: Hero) {
+    HEROES.push(hero);
+  }
 }

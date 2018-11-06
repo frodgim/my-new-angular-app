@@ -30,8 +30,8 @@ export class HeroesComponent implements OnInit {
 
   onNewHero() {
     const hero: Hero = {id: -1, name: ''};
-    this.heroes.push(hero);
-    this.selectedHero = hero;
+    this.heroService.add(hero);
+    this.onSelect(hero);
 
     this.messageService.add(`Añadiendo nuevo héroe`);
   }
