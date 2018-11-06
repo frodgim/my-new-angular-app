@@ -1,0 +1,12 @@
+
+<h2>My Heroes</h2>
+<button type="button" class="btn btn-default" (click)="onNewHero()">Add a new hero</button>
+<div class="row">
+  <ul class="heroes col-md-4">
+    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+  </ul>
+  
+  <app-hero-detail [hero]="selectedHero" ></app-hero-detail>
+</div>
