@@ -28,10 +28,16 @@
                     </a>
                 </li>
                 <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/herodemo"]' (click)='collapse()'>
+                    <a [routerLink]='["/heroes"]' (click)='collapse()'>
                         <span class='glyphicon glyphicon-play'></span> Tour of heroes
                     </a>
                 </li>
+                <li [routerLinkActive]='["link-active"]'>
+                    <a [routerLink]='["/dashboard"]' (click)='collapse()'>
+                        <span class='glyphicon glyphicon-play'></span> Dashboard tour of heroes
+                    </a>
+                </li>    
+                
 
             </ul>
         </div>

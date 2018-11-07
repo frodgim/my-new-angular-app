@@ -12,8 +12,10 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { MessagesComponent } from './messages/messages.component';
-import {HeroService} from './hero.service';
-import {MessageService} from './message.service';
+import {HeroService} from './services/hero.service';
+import {MessageService} from './services/message.service';
+import { AppRoutingModule } from './/app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -25,18 +27,14 @@ import {MessageService} from './message.service';
     FetchDataComponent,
     HeroesComponent,
     HeroDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'herodemo', component: HeroesComponent }
-    ])
+    AppRoutingModule
   ],
   providers: [HeroService, MessageService],
   bootstrap: [AppComponent]
