@@ -21,14 +21,8 @@ export class HeroService  {
   getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.getBaseUrlApi() + '/GetHeroes');
   }
-  // addHero(hero: Hero) {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   return this.http.post<boolean>(this.getBaseUrlApi() + '/SaveHero',
-  //                                       hero, {headers: headers});
-  // }
 
   getHero(id: number): Observable<Hero> {
-    // return of(HEROES.find(hero => hero.id === id));
     const params = new HttpParams()
                         .set('id', `${id}`);
     return this.http.get<Hero>(this.getBaseUrlApi() + '/GetHero', {params: params});

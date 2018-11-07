@@ -37,12 +37,6 @@ namespace my_new_angular_app.Controllers
             return _heroes.FirstOrDefault(x => x.Id == id);
         }
 
-        // [HttpPost("[action]")]
-        // public bool NewHero(Hero hero){
-        //     _heroes.Add(hero);
-        //     return true;
-        // }
-
         [HttpPost("[action]")]
         public bool SaveHero([FromBody]Hero hero){
             var heroInList = _heroes.FirstOrDefault( x => x.Id == hero.Id) ;
