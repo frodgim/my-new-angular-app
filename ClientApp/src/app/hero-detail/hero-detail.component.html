@@ -1,7 +1,10 @@
 <div *ngIf="hero" class=" col-md-4">
 
   <h2>_{{hero.id}}_{{hero.name | uppercase}} Details </h2>
-  <div><span>id: </span> <input type="number" [(ngModel)]="hero.id" placeholder="Type a hero id..."></div>
+   <div><span>id: </span> {{hero.Id}}
+  <!-- <input type="number" [(ngModel)]="hero.id" placeholder="Type a hero id..."> -->
+  
+  </div> 
 
   
   <div>
@@ -9,5 +12,6 @@
       <input [(ngModel)]="hero.name" placeholder="Type a hero name...">
     </label>
   </div>
+  <button (click)="onSaveHero()">Save Hero</button>
   <button (click)="goBack()">go back</button>
 </div>

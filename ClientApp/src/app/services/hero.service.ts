@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 import { Hero } from '../hero';
-import { HEROES } from '../mock-heroes';
+// import { HEROES } from '../mock-heroes';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 
@@ -10,17 +11,33 @@ import {of} from 'rxjs/observable/of';
 @Injectable()
 export class HeroService  {
 
-  constructor() { }
+  getBaseUrlApi(): string {
+
+    return this.baseUrl + 'api/Heroes';
+  }
+
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
 
   getHeroes(): Observable<Hero[]> {
-    return of(HEROES);
+    return this.http.get<Hero[]>(this.getBaseUrlApi() + '/GetHeroes');
   }
-  add(hero: Hero) {
-    HEROES.push(hero);
-  }
+  // addHero(hero: Hero) {
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   return this.http.post<boolean>(this.getBaseUrlApi() + '/SaveHero',
+  //                                       hero, {headers: headers});
+  // }
 
   getHero(id: number): Observable<Hero> {
-    return of(HEROES.find(hero => hero.id === id));
+    // return of(HEROES.find(hero => hero.id === id));
+    const params = new HttpParams()
+                        .set('id', `${id}`);
+    return this.http.get<Hero>(this.getBaseUrlApi() + '/GetHero', {params: params});
+  }
+
+  saveHero(hero: Hero): Observable<boolean> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<boolean>(this.getBaseUrlApi() + '/SaveHero',
+                                        hero, {headers: headers});
   }
 
 }

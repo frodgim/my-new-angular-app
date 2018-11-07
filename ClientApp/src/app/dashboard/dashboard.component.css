@@ -60,3 +60,7 @@
       min-width: 60px;
     }
   }
+
+  .linkToList{
+    cursor: pointer;
+  }
