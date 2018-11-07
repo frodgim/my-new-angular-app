@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Hero} from '../hero';
+import { Router } from '@angular/router';
+
+import { Hero } from '../hero';
 
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/Observable/of';
@@ -24,7 +26,8 @@ export class HeroDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private heroService: HeroService,
     private messageService: MessageService,
-    private location: Location) { }
+    private location: Location,
+    private router: Router) { }
 
   ngOnInit() {
     this.idByRouting = +this.route.snapshot.paramMap.get('id');
@@ -41,9 +44,13 @@ export class HeroDetailComponent implements OnInit {
   }
 
   onSaveHero() {
-    this.heroService.saveHero(this.hero).subscribe( r => this.goBack());
+    this.heroService.saveHero(this.hero).subscribe( r => this.goToList());
 
     this.messageService.add(`Salvando héroe actual`);
+  }
+
+  goToList(): void {
+    this.router.navigate(['/heroes']);
   }
 
   goBack(): void {
