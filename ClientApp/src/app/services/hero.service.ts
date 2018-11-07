@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
+import { Hero } from '../hero';
+import { HEROES } from '../mock-heroes';
 import { Observable } from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 
@@ -18,4 +18,10 @@ export class HeroService  {
   add(hero: Hero) {
     HEROES.push(hero);
   }
+
+  getHero(id: number): Observable<Hero> {
+    return of(HEROES.find(hero => hero.id === id));
+  }
+
 }
+
