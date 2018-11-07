@@ -4,12 +4,13 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Hero } from '../hero';
 // import { HEROES } from '../mock-heroes';
 import { Observable } from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
+import { of } from 'rxjs/observable/of';
+import { IService } from './generic.service.t'
 
 
 
 @Injectable()
-export class HeroService  {
+export class HeroService implements IService{
 
   getBaseUrlApi(): string {
 
